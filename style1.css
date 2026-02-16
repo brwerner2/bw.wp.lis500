@@ -1,3 +1,6 @@
+.container1 {
+    padding: 10px;
+}
 .container2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -51,3 +54,4 @@ li {
     padding: 8px;
     border-bottom: 1px solid #0D3950;
 }
+
