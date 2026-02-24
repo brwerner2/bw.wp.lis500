@@ -22,9 +22,9 @@ nav ul li {
 nav ul li a {
     display: block;
     padding: 12px 20px;
-    color: #FFFFFF;
+    color: #FFFFFF; /* Makes the link color white*/
     text-decoration: none;
-    transition: background 0.3s;
+    transition: background 0.3s; 
 }
 nav ul li a:hover {
     background-color: #0D3950;
@@ -34,15 +34,15 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    text-align: center; /* Makes the header text center aligned*/
     background-color: #114C6C;
-    color: white;
+    color: white; /* Makes the header text color white*/
     padding: 20px;
 }
 .column {
     padding: 20px;
     border: 1px solid #ccc;
-    border-radius: 10px;
+    border-radius: 10px; /* rounds the corners of the column container*/
     background-color: #f9f9f9;
 }
 
@@ -54,6 +54,7 @@ li {
     padding: 8px;
     border-bottom: 1px solid #0D3950;
 }
+
 
 
 
