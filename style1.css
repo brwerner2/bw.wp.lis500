@@ -63,7 +63,8 @@ li {
   font-weight: 700;
   color: white;
   width: 75%;               
-  display: block;        
+  display: block;
+  align-items: center;
 }
 
 
