@@ -54,14 +54,18 @@ li {
     padding: 8px;
     border-bottom: 1px solid #0D3950;
 }
-sh
+.sh
 {
-      background-color: #0D3950;
-      border: 1px solid #FFFFFF;
-      text-align: center;
-      font-weight: 700;
-      padding: 8px 16px;
-      margin: 16px 16px 16px;
+  background: lightblue;
+  border: 1px solid #ccc;    /* slightly darker border */
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  padding: 8px 16px;
+  width: 100%;                  /* stretch full width */
+  display: block;
+  margin: 20px 0px 10px;          /* no side margins */
+}
 }
 
 
