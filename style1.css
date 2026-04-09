@@ -56,15 +56,15 @@ li {
 }
 .sh
 {
-  background: lightblue;
-  border: 1px solid #ccc;    /* slightly darker border */
+  background: #0D3950;
+  border: 1px solid #ccc;   
   text-align: center;
   font-weight: 700;
   color: white;
   padding: 8px 16px;
-  width: 100%;                  /* stretch full width */
+  width: 100%;               
   display: block;
-  margin: 20px 0px 10px;          /* no side margins */
+  margin: 20px 0px 10px;        
 }
 
 
