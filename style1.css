@@ -57,14 +57,15 @@ li {
 .sh
 {
   background-color: #E8A838;
+  align-items: center;
   padding-top: 10px;
   padding-bottom: 10px;  
   text-align: center;
   font-weight: 700;
   color: white;
-  width: 75%;               
+  width: 100%;               
   display: block;
-  align-items: center;
+  
 }
 
 
