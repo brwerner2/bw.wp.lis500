@@ -57,7 +57,9 @@ li {
 .sh
 {
   background-color: #E8A838;
-  border: 1px solid #ccc;   
+  border: 1px solid #ccc; 
+  padding-top: 10px;
+  padding-bottom: 10px;  
   text-align: center;
   font-weight: 700;
   color: white;
