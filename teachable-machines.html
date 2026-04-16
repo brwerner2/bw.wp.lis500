@@ -50,14 +50,68 @@ Link to your dataset
 		<p>Lastly, one of the most interesting things from this experiment was the tongs, which were the biggest wildcard within our teachable machine. This example is at the core of many data training models like ours. Where there is a misunderstanding that when an image is uploaded into a training model, the machine receives no wider context. It does not know that tongs are a gripping tool that opens and closes or that a closed pair of tongs and an open pair of tongs are the same object. The challenge of representing the full range of what an object looks like falls entirely on us as the people collecting the data, and if we don't think to photograph tongs in both positions, the model won't ever know that closed tongs exist.</p>
         </div>
 		</div>
-		<div class="container2">
 		<div class="column">
-		<h2>Video</h2>
+		<h2>Demo</h2>
 	<div style="text-align: center;">
-		<video width="600" height="300" controls poster="tm_thumbnail.jpg" >
-  			<source src="tm_video.mp4" type="video/mp4">
-		</video>
-		</div>
+		<button type="button" onclick="init()"style="font-size: 24px; padding: 30px 30px;">Start</button>
+	</div>
+<div id="webcam-container"></div>
+<div id="label-container"></div>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+<script type="text/javascript">
+    // More API functions here:
+    // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
+
+    // the link to your model provided by Teachable Machine export panel
+    const URL = "https://teachablemachine.withgoogle.com/models/1p6AK1jqA/";
+
+    let model, webcam, labelContainer, maxPredictions;
+
+    // Load the image model and setup the webcam
+    async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        // load the model and metadata
+        // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+        // or files from your local hard drive
+        // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        // Convenience function to setup a webcam
+        const flip = true; // whether to flip the webcam
+        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+        await webcam.setup(); // request access to the webcam
+        await webcam.play();
+        window.requestAnimationFrame(loop);
+
+        // append elements to the DOM
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        labelContainer = document.getElementById("label-container");
+        for (let i = 0; i < maxPredictions; i++) { // and class labels
+            labelContainer.appendChild(document.createElement("div"));
+        }
+    }
+
+    async function loop() {
+        webcam.update(); // update the webcam frame
+        await predict();
+        window.requestAnimationFrame(loop);
+    }
+
+    // run the webcam image through the image model
+    async function predict() {
+        // predict can take in an image, video or canvas html element
+        const prediction = await model.predict(webcam.canvas);
+        for (let i = 0; i < maxPredictions; i++) {
+            const classPrediction =
+                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
+    }
+</script>
 		</div>
 		</div>
 	
@@ -128,6 +182,10 @@ Link to your dataset
         }
     }
 </script>
+		<div style="text-align: center;">
+		<video width="600" height="300" controls poster="tm_thumbnail.jpg" >
+  			<source src="tm_video.mp4" type="video/mp4">
+		</video>
 	<div class="she"><a href="https://teachablemachine.withgoogle.com/models/1p6AK1jqA/" style="color:white"; target="_blank">Try It Out Here!</a></div>
 </html>
 
